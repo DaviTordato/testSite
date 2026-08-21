@@ -6,13 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-    h1 {font-family: 'Barrio', system-ui, sans-serif;}
-    h2 {font-family: 'Barrio', system-ui, sans-serif;}
-    h3 {font-family: 'Barrio', system-ui, sans-serif;}
-    h4 {font-family: 'Barrio', system-ui, sans-serif;}
-    h5 {font-family: 'Barrio', system-ui, sans-serif;}
-    h6 {font-family: 'Barrio', system-ui, sans-serif;}
-</style>
+        h1 {font-family: 'Barrio', system-ui, sans-serif;}
+        h2 {font-family: 'Barrio', system-ui, sans-serif;}
+        h3 {font-family: 'Barrio', system-ui, sans-serif;}
+        h4 {font-family: 'Barrio', system-ui, sans-serif;}
+        h5 {font-family: 'Barrio', system-ui, sans-serif;}
+        h6 {font-family: 'Barrio', system-ui, sans-serif;}
+        
+        /* Estilo para deixar as horas bonitas e destacadas */
+        #relogio {
+            font-family: 'Barrio', system-ui, sans-serif;
+            font-size: 48px;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        
+        /* Estilo para a data */
+        #data {
+            font-family: system-ui, sans-serif;
+            font-size: 18px;
+            color: #aaaaaa;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <center>
@@ -21,12 +38,51 @@
         <img width="300px" src="clock-fast-white.gif" alt="">
         <br>
         <br>
+        
+        <!-- O RELÓGIO FOI ADICIONADO AQUI, ACIMA DO H1 -->
+        <div id="relogio">00:00:00</div>
+        
         <h1>The Time is passing</h1>
         <h2>The Time is passing</h2>
         <h3>The Time is passing</h3>
         <h4>The Time is passing</h4>
         <h5>The Time is passing</h5>
         <h6>The Time is passing Darwin</h6>
+        
+        <div id="data-container">
+            <div id="data">Carregando data...</div>
+        </div>
     </center>
+
+    <!-- SCRIPT QUE FAZ O RELÓGIO E A DATA FUNCIONAREM -->
+    <script>
+        function atualizarTempoTodo() {
+            const agora = new Date();
+            
+            // 1. ATUALIZA O RELÓGIO (Horas, Minutos e Segundos)
+            const horas = String(agora.getHours()).padStart(2, '0');
+            const minutos = String(agora.getMinutes()).padStart(2, '0');
+            const segundos = String(agora.getSeconds()).padStart(2, '0');
+            
+            document.getElementById('relogio').textContent = `${horas}:${minutos}:${segundos}`;
+            
+            // 2. ATUALIZA A DATA
+            const opcoes = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            const dataFormatada = agora.toLocaleDateString('pt-BR', opcoes);
+            
+            document.getElementById('data').textContent = dataFormatada;
+        }
+
+        // Atualiza a cada 1 segundo (1000 milissegundos)
+        setInterval(atualizarTempoTodo, 1000);
+
+        // Roda imediatamente quando a página carrega
+        atualizarTempoTodo();
+    </script>
 </body>
 </html>

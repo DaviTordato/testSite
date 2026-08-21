@@ -1,13 +1,11 @@
-img{
-    filter: brightness(1) invert(1);
-}
+img{filter: brightness(1) invert(1);}
 h1{text-align: center; color: #ffffff;}
 h2{text-align: center; color: #ffffff;}
 h3{text-align: center; color: #ffffff;}
 h4{text-align: center; color: #ffffff;}
 h5{text-align: center; color: #ffffff;}
 h6{text-align: center; color: #ffffff;}
-body{
-    background-color: black;
-    text-align: center;
+body{background-color: black;text-align: center;}
+#data-container{
+    font-family: Barrio;
 }
